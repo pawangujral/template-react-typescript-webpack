@@ -1,11 +1,23 @@
-# Webpack Boilerplate
+# React Webpack Boilerplate
 
 Simply clone this project and get started. You can replace this readme with your
 own.
 
 ## Available scripts
 
-To start the project, simply run:
+To start the project in development, simply run:
+
+```bash
+npm run dev
+```
+
+To build the project for production, simply run:
+
+```bash
+npm run build
+```
+
+To run the project in production, simply run:
 
 ```bash
 npm run start

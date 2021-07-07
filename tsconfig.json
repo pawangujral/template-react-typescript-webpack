@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "charset": "utf-8",
@@ -31,7 +32,7 @@
       "_/*": ["*"]
     }
   },
-  "files": ["./src/index.ts"],
+  "files": ["src/index.tsx"],
   "include": ["./**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".vscode"]
 }

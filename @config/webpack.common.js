@@ -1,5 +1,4 @@
 const { resolve, join } = require('path');
-const autoPrefixer = require('autoprefixer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -10,7 +9,7 @@ const rootDirectory = resolve(__dirname, '..');
 const configuration = {
   cache: true,
   entry: {
-    app: join(rootDirectory, '/src/index.ts'),
+    app: join(rootDirectory, '/src/index.tsx'),
   },
   module: {
     rules: [
@@ -20,13 +19,13 @@ const configuration = {
           sources: {
             list: [
               {
-                tag: 'img',
                 attribute: 'src',
+                tag: 'img',
                 type: 'src',
               },
               {
-                tag: 'link',
                 attribute: 'href',
+                tag: 'link',
                 type: 'src',
               },
             ],
@@ -35,7 +34,7 @@ const configuration = {
         test: /\.html$/u,
       },
       {
-        test: /\.ts$/u,
+        test: /\.(ts|tsx)$/u,
         use: [
           {
             loader: 'ts-loader',
@@ -62,7 +61,7 @@ const configuration = {
         ],
       },
       {
-        test: /\.(svg)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
@@ -111,7 +110,8 @@ const configuration = {
     }),
   ],
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.tsx'],
+    mainFields: ['browser', 'module', 'main'],
     plugins: [new TsconfigPathsPlugin()],
   },
 };

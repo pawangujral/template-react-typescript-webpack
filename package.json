@@ -1,0 +1,86 @@
+{
+  "name": "@pawangujral/webpack-ui-template",
+  "author": "Pawan Gujral",
+  "email": "gujral87@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pawangujral/template.git",
+    "bugs": "https://github.com/pawangujral/template.git/issues"
+  },
+  "description": "Webpack template for quick vanilla project",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@ridedott/eslint-config": "^1.1.44",
+    "@types/jest": "^26.0.23",
+    "@types/webpack-env": "^1.16.2",
+    "autoprefixer": "^10.2.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.2.6",
+    "cssnano": "^4.1.11",
+    "eslint": "^7.30.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.0",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-loader": "^6.1.1",
+    "prettier": "^2.3.2",
+    "style-loader": "^3.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "ts-jest": "^25.3.1",
+    "ts-loader": "^9.2.3",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "typescript": "^4.3.5",
+    "webpack": "^5.42.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "engines": {
+    "node": "12",
+    "npm": ">=6.13.4"
+  },
+  "files": [
+    "src"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run husky:pre-commit"
+    }
+  },
+  "license": "UNLICENSED",
+  "lint-staged": {
+    "*.css": [
+      "stylelint --fix"
+    ],
+    "*.ts": [
+      "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\""
+    ],
+    "*.{css,js,json,md,ts,yaml,yml}": [
+      "prettier --write"
+    ]
+  },
+  "scripts": {
+    "format": "prettier --check \"**/*.{css,js,json,md,ts,yml,yaml}\"",
+    "format:fix": "prettier --write \"**/*.{css,js,json,md,ts,yml,yaml}\"",
+    "husky:lint-staged": "lint-staged",
+    "husky:pre-commit": "run-p husky:lint-staged",
+    "lint": "run-p lint:css lint:ts",
+    "lint:css": "stylelint 'src/**/*.css'",
+    "lint:css:fix": "stylelint --fix 'src/**/*.css'",
+    "lint:fix": "run-p lint:*:fix",
+    "lint:ts": "eslint --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
+    "lint:ts:fix": "eslint --fix --resolve-plugins-relative-to \"./node_modules/@ridedott/eslint-config\" \"**/*.ts\"",
+    "start": "webpack serve --config @config/webpack.development.js --progress",
+    "build": "webpack --mode production --config @config/webpack.production.js",
+    "test": "jest",
+    "types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "postcss": "^8.3.5"
+  }
+}
